@@ -3,10 +3,640 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
+    <title>Dr. Ran Xu - Academic Homepage</title>
+    <!-- Tailwind CSS for modern layout utilities -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter for academic sleekness -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for neat icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            600: '#475569', // Sophisticated Slate Grey
+                            800: '#1e293b', // Deep Slate / Charcoal
+                            900: '#0f172a', // Off-black
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth transitions for tabs */
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.25s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+        }
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+    </style>
 </head>
-<body>
-    <h1>Welcome to My Website!</h1>
-    <p>Hi, I'm [Your Name]. I am building this site using GitHub Pages.</p>
+<body class="bg-brand-50 text-brand-800 antialiased min-h-screen flex flex-col font-sans">
+
+    <!-- Header Section -->
+    <header class="bg-white border-b border-brand-100 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 h-20 flex flex-col md:flex-row md:items-center md:justify-between justify-center gap-2">
+            <div>
+                <h1 class="text-2xl font-bold text-brand-900 tracking-tight">Dr. Ran Xu (徐然)</h1>
+                <p class="text-sm text-brand-600 font-medium">Associate Professor in Actuarial Science | XJTLU</p>
+            </div>
+            
+            <!-- Dynamic Tab Navigation Links -->
+            <nav class="flex space-x-1 md:space-x-2 text-sm">
+                <button onclick="switchTab('about')" id="tab-btn-about" class="tab-btn px-3 py-1.5 rounded-md font-medium transition-all duration-200 text-brand-600 hover:text-brand-900 hover:bg-brand-100">About</button>
+                <button onclick="switchTab('research')" id="tab-btn-research" class="tab-btn px-3 py-1.5 rounded-md font-medium transition-all duration-200 text-brand-600 hover:text-brand-900 hover:bg-brand-100">Research</button>
+                <button onclick="switchTab('teaching')" id="tab-btn-teaching" class="tab-btn px-3 py-1.5 rounded-md font-medium transition-all duration-200 text-brand-600 hover:text-brand-900 hover:bg-brand-100">Teaching</button>
+                <button onclick="switchTab('service')" id="tab-btn-service" class="tab-btn px-3 py-1.5 rounded-md font-medium transition-all duration-200 text-brand-600 hover:text-brand-900 hover:bg-brand-100">Service & Awards</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Body -->
+    <main class="max-w-5xl mx-auto px-6 py-10 flex-grow w-full">
+
+        <!-- ================= ABOUT / HOME TAB ================= -->
+        <section id="tab-about" class="tab-content">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Left profile / contact card -->
+                <div class="md:col-span-1 space-y-6">
+                    <div class="bg-white border border-brand-100 rounded-2xl p-6 shadow-sm flex flex-col items-center text-center">
+                        <!-- Minimalist Academic Avatar Placeholder -->
+                        <div class="w-32 h-32 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 text-4xl mb-4 border border-brand-100">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h2 class="text-lg font-bold text-brand-900">Dr. Ran Xu</h2>
+                        <p class="text-sm text-brand-600 mt-1">Dept. of Financial & Actuarial Mathematics</p>
+                        
+                        <div class="w-full border-t border-brand-100 my-4"></div>
+                        
+                        <div class="w-full text-left space-y-3 text-sm text-brand-600">
+                            <div class="flex items-start gap-3">
+                                <i class="fa-regular fa-envelope mt-1 text-brand-800"></i>
+                                <span>ran.xu@xjtlu.edu.cn</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-phone mt-1 text-brand-800"></i>
+                                <span>+86 (0)512 8188 9181</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-location-dot mt-1 text-brand-800"></i>
+                                <span>MB244, Mathematics Building, Suzhou, P.R. China</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Bio & Timeline -->
+                <div class="md:col-span-2 space-y-8">
+                    <!-- Intro -->
+                    <div>
+                        <h3 class="text-xl font-bold text-brand-900 border-b border-brand-100 pb-3 mb-4">About Me</h3>
+                        <p class="text-brand-600 leading-relaxed text-base">
+                            I am an <strong>Associate Professor</strong> in the Department of Financial & Actuarial Mathematics at Xi'an Jiaotong-Liverpool University (XJTLU). Currently, I also serve as the <strong>Program Director</strong> for the MSc Actuarial Science program. 
+                        </p>
+                        <p class="text-brand-600 leading-relaxed text-base mt-4">
+                            My research sits at the intersection of actuarial science, stochastic control, and mathematical modeling in insurance risk. I primarily focus on optimal dividend strategies, capital injection mechanisms, mortality forecasting, and applying modern machine learning methodologies to insurance risk evaluation.
+                        </p>
+                    </div>
+
+                    <!-- Current Appointments -->
+                    <div>
+                        <h3 class="text-xl font-bold text-brand-900 border-b border-brand-100 pb-3 mb-4">Appointments</h3>
+                        <div class="relative pl-6 border-l border-brand-100 space-y-6">
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1.5 w-4.5 h-4.5 rounded-full bg-white border-2 border-brand-800"></div>
+                                <span class="text-xs font-semibold text-brand-600">Jan 2024 - Present</span>
+                                <h4 class="text-base font-bold text-brand-900">Associate Professor</h4>
+                                <p class="text-sm text-brand-600">Department of Financial & Actuarial Mathematics, Xi'an Jiaotong-Liverpool University</p>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1.5 w-4.5 h-4.5 rounded-full bg-white border-2 border-brand-800"></div>
+                                <span class="text-xs font-semibold text-brand-600">Apr 2021 - Present</span>
+                                <h4 class="text-base font-bold text-brand-900">Program Director, MSc Actuarial Science</h4>
+                                <p class="text-sm text-brand-600">Xi'an Jiaotong-Liverpool University</p>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1.5 w-4.5 h-4.5 rounded-full bg-white border-2 border-brand-600"></div>
+                                <span class="text-xs font-semibold text-brand-600">Aug 2019 - Dec 2023</span>
+                                <h4 class="text-base font-bold text-brand-900">Assistant Professor</h4>
+                                <p class="text-sm text-brand-600">Department of Financial & Actuarial Mathematics, Xi'an Jiaotong-Liverpool University</p>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1.5 w-4.5 h-4.5 rounded-full bg-white border-2 border-brand-600"></div>
+                                <span class="text-xs font-semibold text-brand-600">Sep 2018 - Aug 2019</span>
+                                <h4 class="text-base font-bold text-brand-900">Postdoctoral Fellow</h4>
+                                <p class="text-sm text-brand-600">Department of Mathematics & Statistics, Concordia University, Montreal, Canada (Adviser: Prof. Jose Garrido)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div>
+                        <h3 class="text-xl font-bold text-brand-900 border-b border-brand-100 pb-3 mb-4">Education</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-start gap-4 text-sm">
+                                <div>
+                                    <h4 class="font-bold text-brand-900">PhD in Actuarial Science</h4>
+                                    <p class="text-brand-600">University of Hong Kong</p>
+                                    <p class="text-xs text-brand-600 mt-1">Thesis: <em>Some Capital Injection Problems for Insurance Type Risk Model</em> (Advisers: Prof. Hailiang Yang and Dr. Jae-kyung Woo)</p>
+                                </div>
+                                <span class="text-xs font-medium text-brand-600 whitespace-nowrap">2014 - 2018</span>
+                            </div>
+                            <div class="flex justify-between items-start gap-4 text-sm">
+                                <div>
+                                    <h4 class="font-bold text-brand-900">MSc in Applied Mathematics</h4>
+                                    <p class="text-brand-600">Nankai University, Tianjin, China</p>
+                                    <p class="text-xs text-brand-600 mt-1">Thesis: <em>Some studies on dual risk model with time-dependent dividend barrier</em> (Adviser: Prof. Junyi Guo)</p>
+                                </div>
+                                <span class="text-xs font-medium text-brand-600 whitespace-nowrap">2010 - 2013</span>
+                            </div>
+                            <div class="flex justify-between items-start gap-4 text-sm">
+                                <div>
+                                    <h4 class="font-bold text-brand-900">Master of Actuarial Science</h4>
+                                    <p class="text-brand-600">University of Melbourne, Australia</p>
+                                </div>
+                                <span class="text-xs font-medium text-brand-600 whitespace-nowrap">2012</span>
+                            </div>
+                            <div class="flex justify-between items-start gap-4 text-sm">
+                                <div>
+                                    <h4 class="font-bold text-brand-900">BSc in Applied Physics</h4>
+                                    <p class="text-brand-600">Anhui University, Anhui, China</p>
+                                </div>
+                                <span class="text-xs font-medium text-brand-600 whitespace-nowrap">2006 - 2010</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= RESEARCH TAB ================= -->
+        <section id="tab-research" class="tab-content">
+            <div class="space-y-10">
+                <!-- Research Funding -->
+                <div>
+                    <h3 class="text-xl font-bold text-brand-900 border-b border-brand-100 pb-3 mb-6"><i class="fa-solid fa-coins mr-2 text-brand-600"></i>Research Funds & Grants</h3>
+                    
+                    <div class="space-y-6">
+                        <!-- External Grants PI -->
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-3">External Funds (As Principal Investigator)</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-white border border-brand-100 p-5 rounded-xl shadow-sm space-y-2">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-xs font-semibold bg-brand-100 px-2.5 py-0.5 rounded text-brand-800">NSFC Young Scientist Fund</span>
+                                        <span class="text-xs text-brand-600">2023 - 2025</span>
+                                    </div>
+                                    <h5 class="font-bold text-brand-900 text-sm">Optimal dividend and capital injection with practice constraints and risk management restrictions</h5>
+                                    <p class="text-xs text-brand-600">No. 12201506 | Total Funding: <strong>RMB 300K</strong></p>
+                                </div>
+                                <div class="bg-white border border-brand-100 p-5 rounded-xl shadow-sm space-y-2">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-xs font-semibold bg-brand-100 px-2.5 py-0.5 rounded text-brand-800">NSF of Jiangsu Higher Education</span>
+                                        <span class="text-xs text-brand-600">2021 - 2023</span>
+                                    </div>
+                                    <h5 class="font-bold text-brand-900 text-sm">Optimal dividend and capital injection problem with regime switching</h5>
+                                    <p class="text-xs text-brand-600">General Program, No. 21KJB110024 | Total Funding: <strong>RMB 30K</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- External Grants Co-PI -->
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-3">External Funds (As Co-Investigator)</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-white border border-brand-100 p-5 rounded-xl shadow-sm space-y-2">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-xs font-semibold bg-brand-100 px-2.5 py-0.5 rounded text-brand-800">NSFC General Program</span>
+                                        <span class="text-xs text-brand-600">2024 - 2027</span>
+                                    </div>
+                                    <h5 class="font-bold text-brand-900 text-sm">Research on stochastic control problems of life insurance models under hidden Markov chain environment and annuity puzzle problems</h5>
+                                    <p class="text-xs text-brand-600">PI: Xiaoqing Liang | No. 12371468 | Total Funding: <strong>RMB 435K</strong></p>
+                                </div>
+                                <div class="bg-white border border-brand-100 p-5 rounded-xl shadow-sm space-y-2">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-xs font-semibold bg-brand-100 px-2.5 py-0.5 rounded text-brand-800">NSFC General Program</span>
+                                        <span class="text-xs text-brand-600">2022 - 2025</span>
+                                    </div>
+                                    <h5 class="font-bold text-brand-900 text-sm">Theory of Two-Step Extreme Quantile Regression Model with Applications in Insurance Ratemaking</h5>
+                                    <p class="text-xs text-brand-600">PI: Yanxi Hou | No. 72171055 | Total Funding: <strong>RMB 490K</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Internal Grants -->
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-3">Internal Funds (As Principal Investigator)</h4>
+                            <div class="bg-white border border-brand-100 p-5 rounded-xl shadow-sm space-y-2 max-w-xl">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-semibold bg-brand-100 px-2.5 py-0.5 rounded text-brand-800">XJTLU RDF</span>
+                                    <span class="text-xs text-brand-600">2021 - 2024</span>
+                                </div>
+                                <h5 class="font-bold text-brand-900 text-sm">Optimal dividend and capital injection problems with risk-related stopping times</h5>
+                                <p class="text-xs text-brand-600">RDF-20-01-02 | Total Funding: <strong>RMB 95K</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Peer-Reviewed Publications -->
+                <div>
+                    <h3 class="text-xl font-bold text-brand-900 border-b border-brand-100 pb-3 mb-6"><i class="fa-solid fa-book-open-reader mr-2 text-brand-600"></i>Peer-Reviewed Publications</h3>
+                    <div class="space-y-4 text-sm text-brand-600">
+                        <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm hover:border-brand-600 transition">
+                            <span class="text-xs font-bold text-brand-600 block mb-1">2026+ (Accepted / Forthcoming)</span>
+                            <p class="leading-relaxed">
+                                <span class="text-brand-900 font-medium">Shize Na, Zhuo Jin, <strong>Ran Xu</strong>, and Hailiang Yang</span>. Cyber Risk Management and Mitigation via Controlled Stochastic SIS Epidemic Model. <span class="italic text-brand-900 font-medium">Submitted / Working Status</span>.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm hover:border-brand-600 transition">
+                            <span class="text-xs font-bold text-brand-600 block mb-1">2026+ (Accepted / Forthcoming)</span>
+                            <p class="leading-relaxed">
+                                <span class="text-brand-900 font-medium">Ningning Feng, Yixuan Liu, and <strong>Ran Xu</strong></span>. Optimal dividend and capital injection control with liquidation under two-sided jump-diffusion processes. <span class="italic text-brand-900 font-medium">Submitted / Working Status</span>.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm hover:border-brand-600 transition">
+                            <span class="text-xs font-bold text-brand-600 block mb-1">2026</span>
+                            <p class="leading-relaxed">
+                                <span class="text-brand-900 font-medium">Kaixin Yan, <strong>Ran Xu</strong>, and Jing Yao</span>. Optimal bailout ratcheting of dividends under a Brownian risk model. <span class="italic text-brand-900 font-medium">Scandinavian Actuarial Journal</span>, 1-26.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm hover:border-brand-600 transition">
+                            <span class="text-xs font-bold text-brand-600 block mb-1">2026</span>
+                            <p class="leading-relaxed">
+                                <span class="text-brand-900 font-medium">Ningning Feng and <strong>Ran Xu</strong></span>. Optimal Dividend and Capital Injection Strategies with Exit Options in Jump-Diffusion Models. <span class="italic text-brand-900 font-medium">Mathematics</span>, 14(3), 447.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm hover:border-brand-600 transition">
+                            <span class="text-xs font-bold text-brand-600 block mb-1">2025</span>
+                            <p class="leading-relaxed">
+                                <span class="text-brand-900 font-medium">Wenyuan Wang, <strong>Ran Xu</strong>, and Kaixin Yan</span>. Optimal ratcheting of dividends with capital injection. <span class="italic text-brand-900 font-medium">Mathematics of Operations Research</span>, 50(3), 2073-2111.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm hover:border-brand-600 transition">
+                            <span class="text-xs font-bold text-brand-600 block mb-1">2024</span>
+                            <p class="leading-relaxed">
+                                <span class="text-brand-900 font-medium">Garrido, Jose, Yuxiang Shang and <strong>Ran Xu</strong></span>. LSTM-Based Coherent Mortality Forecasting for Developing Countries. <span class="italic text-brand-900 font-medium">Risks</span>, 12(2), 27.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm hover:border-brand-600 transition">
+                            <span class="text-xs font-bold text-brand-600 block mb-1">2023</span>
+                            <p class="leading-relaxed">
+                                <span class="text-brand-900 font-medium"><strong>Ran Xu</strong></span>. Optimal singular dividend control with capital injection and affine penalty payment at ruin. <span class="italic text-brand-900 font-medium">Probability in the Engineering and Informational Sciences</span>, 37(2), 462-490.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm hover:border-brand-600 transition">
+                            <span class="text-xs font-bold text-brand-600 block mb-1">2022</span>
+                            <p class="leading-relaxed">
+                                <span class="text-brand-900 font-medium"><strong>Ran Xu</strong>, Wenyuan Wang, and Jose Garrido</span>. Optimal dividend strategy under Parisian ruin with affine penalty. <span class="italic text-brand-900 font-medium">Methodology and Computing in Applied Probability</span>, 24, 1385-1409.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm hover:border-brand-600 transition">
+                            <span class="text-xs font-bold text-brand-600 block mb-1">2022</span>
+                            <p class="leading-relaxed">
+                                <span class="text-brand-900 font-medium">Wenyuan Wang and <strong>Ran Xu</strong></span>. General drawdown based dividend control with fixed transaction costs for spectrally negative Lévy risk processes. <span class="italic text-brand-900 font-medium">Journal of Industrial and Management Optimization</span>, 18(2), 795-823.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm hover:border-brand-600 transition">
+                            <span class="text-xs font-bold text-brand-600 block mb-1">2020</span>
+                            <p class="leading-relaxed">
+                                <span class="text-brand-900 font-medium"><strong>Ran Xu</strong> and Jae-Kyung Woo</span>. Optimal dividend and capital injection strategy with a penalty payment at ruin: Restricted dividend payments. <span class="italic text-brand-900 font-medium">Insurance: Mathematics and Economics</span>, 92, 1-16.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm hover:border-brand-600 transition">
+                            <span class="text-xs font-bold text-brand-600 block mb-1">2019</span>
+                            <p class="leading-relaxed">
+                                <span class="text-brand-900 font-medium">Eric C.K. Cheung, Landy Rabehasaina, Jae-Kyung Woo, and <strong>Ran Xu</strong></span>. Asymptotic Correlation Structure of Discounted Incurred But Not Reported Claims under Fractional Poisson Arrival Process. <span class="italic text-brand-900 font-medium">European Journal of Operational Research</span>, 276(2), 582-601.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm hover:border-brand-600 transition">
+                            <span class="text-xs font-bold text-brand-600 block mb-1">2018</span>
+                            <p class="leading-relaxed">
+                                <span class="text-brand-900 font-medium"><strong>Ran Xu</strong>, Jae-Kyung Woo, Xixuan Han, and Hailiang Yang</span>. A plan of capital injections based on the claims frequency. <span class="italic text-brand-900 font-medium">Annals of Actuarial Science</span>, 12(2), 296-325.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm hover:border-brand-600 transition">
+                            <span class="text-xs font-bold text-brand-600 block mb-1">2018</span>
+                            <p class="leading-relaxed">
+                                <span class="text-brand-900 font-medium">Steve Drekic, Jae-Kyung Woo, and <strong>Ran Xu</strong></span>. A threshold-based risk process with a waiting period to pay dividends. <span class="italic text-brand-900 font-medium">Journal of Industrial and Management Optimization</span>, 14(3), 1179-1201.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm hover:border-brand-600 transition">
+                            <span class="text-xs font-bold text-brand-600 block mb-1">2017</span>
+                            <p class="leading-relaxed">
+                                <span class="text-brand-900 font-medium">Jae-Kyung Woo, <strong>Ran Xu</strong>, and Hailiang Yang</span>. Gerber-Shiu analysis with two-sided acceptable levels. <span class="italic text-brand-900 font-medium">Journal of Computational and Applied Mathematics</span>, 321, 185-210.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Reports & Working Papers -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-lg font-bold text-brand-900 border-b border-brand-100 pb-2 mb-4">Technical Reports</h3>
+                        <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm space-y-2 text-sm text-brand-600">
+                            <p>
+                                Liu, Yixuan, Bo, Keyuan, Yi, Qingxin, Wang, Zhiyi, Sun, Yuwen, Xu, Junjie, Zhang, Xueke, and <span class="text-brand-900 font-medium"><strong>Ran Xu</strong></span>. <em>Predict Health Insurance Purchase with Machine Learning Techniques</em> (2021). <a href="https://ssrn.com/abstract=3923317" target="_blank" class="text-brand-800 hover:underline font-medium">Available at SSRN</a>.
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-brand-900 border-b border-brand-100 pb-2 mb-4">Selected Working Papers</h3>
+                        <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm space-y-3 text-sm text-brand-600">
+                            <p class="leading-relaxed">
+                                • <em>Dividend Control and Optimal Liquidation under Omega clock</em>, with Bo Li and Xin Xu.
+                            </p>
+                            <p class="leading-relaxed">
+                                • <em>Cyber Risk Control under Regime-Switching Stochastic SIS Epidemic Model</em>, with Shize Na and Hailiang Yang.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TEACHING TAB ================= -->
+        <section id="tab-teaching" class="tab-content">
+            <div class="space-y-10">
+                <!-- Modules Taught -->
+                <div>
+                    <h3 class="text-xl font-bold text-brand-900 border-b border-brand-100 pb-3 mb-6"><i class="fa-solid fa-chalkboard-user mr-2 text-brand-600"></i>Lecturing & Modules (at XJTLU)</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white border border-brand-100 p-5 rounded-xl shadow-sm space-y-3">
+                            <h4 class="font-bold text-brand-900 text-base">MTH127</h4>
+                            <p class="text-sm text-brand-600">Probability for Actuarial Science</p>
+                            <span class="inline-block text-xs font-semibold bg-brand-100 text-brand-800 px-2 py-0.5 rounded">AY24/25 S1</span>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-5 rounded-xl shadow-sm space-y-3">
+                            <h4 class="font-bold text-brand-900 text-base">MTH434</h4>
+                            <p class="text-sm text-brand-600">Life Insurance Mathematics</p>
+                            <span class="inline-block text-xs font-semibold bg-brand-100 text-brand-800 px-2 py-0.5 rounded">AY21/22, AY22/23</span>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-5 rounded-xl shadow-sm space-y-3">
+                            <h4 class="font-bold text-brand-900 text-base">MTH435</h4>
+                            <p class="text-sm text-brand-600">Stochastic Modelling in Actuarial Science</p>
+                            <span class="inline-block text-xs font-semibold bg-brand-100 text-brand-800 px-2 py-0.5 rounded">AY21/22, AY22/23</span>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-5 rounded-xl shadow-sm space-y-3">
+                            <h4 class="font-bold text-brand-900 text-base">MTH214</h4>
+                            <p class="text-sm text-brand-600">Life Insurance Mathematics II</p>
+                            <span class="inline-block text-xs font-semibold bg-brand-100 text-brand-800 px-2 py-0.5 rounded">AY21/22 S2</span>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-5 rounded-xl shadow-sm space-y-3">
+                            <h4 class="font-bold text-brand-900 text-base">MTH306</h4>
+                            <p class="text-sm text-brand-600">Credibility Theory</p>
+                            <span class="inline-block text-xs font-semibold bg-brand-100 text-brand-800 px-2 py-0.5 rounded">Multiple Semesters</span>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-5 rounded-xl shadow-sm space-y-3">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold text-brand-900 text-base">MTH113</h4>
+                                <span class="text-xs text-brand-600 font-medium">800+ Students</span>
+                            </div>
+                            <p class="text-sm text-brand-600">Introduction to Probability and Statistics</p>
+                            <span class="inline-block text-xs font-semibold bg-brand-100 text-brand-800 px-2 py-0.5 rounded">Module Leader</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Supervision -->
+                <div>
+                    <h3 class="text-xl font-bold text-brand-900 border-b border-brand-100 pb-3 mb-6"><i class="fa-solid fa-users-rectangle mr-2 text-brand-600"></i>Student Supervision</h3>
+                    <div class="space-y-6 text-sm text-brand-600">
+                        <!-- PhD -->
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-3">PhD Mentorship (Principal Supervisor)</h4>
+                            <div class="space-y-3">
+                                <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm">
+                                    <h5 class="font-bold text-brand-900 text-sm">Parisian Implementation Delay in Optimal Dividends</h5>
+                                    <p class="text-xs text-brand-600 mt-1">Research focus: Reinforcement learning applications | Ref: FOSA2212001</p>
+                                </div>
+                                <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm">
+                                    <h5 class="font-bold text-brand-900 text-sm">Optimal Dividend and Capital Injection</h5>
+                                    <p class="text-xs text-brand-600 mt-1">Research focus: Practical constraints & risk management restrictions | Ref: FOSLG221205</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Undergrad & Master -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                            <div>
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-3">Graduate Dissertation Supervision (MTH439)</h4>
+                                <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm space-y-2">
+                                    <p>• <strong>AY23/24:</strong> 9 Master Students Supervised</p>
+                                    <p>• <strong>AY22/23:</strong> 9 Master Students Supervised</p>
+                                    <p>• <strong>AY21/22:</strong> 2 Master Students Supervised</p>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-3">Undergraduate Projects (MTH301) & Research</h4>
+                                <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm space-y-2">
+                                    <p>• <strong>Final Year Projects:</strong> Supervised 17 students over 5 academic years.</p>
+                                    <p>• <strong>SURF (Summer Undergrad Research Fellowships):</strong></p>
+                                    <ul class="list-disc pl-5 text-xs space-y-1 mt-1">
+                                        <li><em>Predict Health Insurance Purchases with ML</em> (2021 | 8 students)</li>
+                                        <li><em>Deep Neural Networks for Human Mortality</em> (2023 | 4 students)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prior Academic/Teaching Exp -->
+                <div>
+                    <h3 class="text-xl font-bold text-brand-900 border-b border-brand-100 pb-3 mb-4">Prior Institutional Teaching</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                        <div class="bg-white border border-brand-100 p-5 rounded-xl shadow-sm space-y-3">
+                            <h4 class="font-bold text-brand-900">Concordia University, Montreal, Canada</h4>
+                            <p class="text-xs text-brand-600">Winter 2019</p>
+                            <ul class="list-disc pl-5 text-brand-600 space-y-1 text-xs">
+                                <li><strong>MATH 209:</strong> Fundamental Mathematics II</li>
+                                <li><strong>STAT 287:</strong> Statistics Lab I</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-5 rounded-xl shadow-sm space-y-3">
+                            <h4 class="font-bold text-brand-900">University of Hong Kong (Teaching Assistant)</h4>
+                            <p class="text-xs text-brand-600">2014 - 2018</p>
+                            <ul class="list-disc pl-5 text-brand-600 space-y-1 text-xs">
+                                <li><strong>STAT2801/3901:</strong> Life Contingencies</li>
+                                <li><strong>STAT3822/4901:</strong> Risk Theory II</li>
+                                <li><strong>STAT6017:</strong> Operational Risk & Insurance Analytics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SERVICE & AWARDS TAB ================= -->
+        <section id="tab-service" class="tab-content">
+            <div class="space-y-10">
+                <!-- Academic Service -->
+                <div>
+                    <h3 class="text-xl font-bold text-brand-900 border-b border-brand-100 pb-3 mb-6"><i class="fa-solid fa-users-gear mr-2 text-brand-600"></i>Editorial & Professional Services</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white border border-brand-100 p-5 rounded-xl shadow-sm space-y-2 md:col-span-1">
+                            <span class="text-xs font-bold text-brand-600 block">Guest Editor (2025)</span>
+                            <h4 class="font-bold text-brand-900 text-sm">Journal of Industrial and Management Optimization</h4>
+                            <p class="text-xs text-brand-600 italic">Special Issue: "Risk Modeling and Optimization in Actuarial Science"</p>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-5 rounded-xl shadow-sm space-y-2 md:col-span-2">
+                            <span class="text-xs font-bold text-brand-600 block">Journal Referee Duties</span>
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-brand-600">
+                                <div>• Journal of Optimization Theory & App.</div>
+                                <div>• Insurance: Mathematics & Economics</div>
+                                <div>• Scandinavian Actuarial Journal</div>
+                                <div>• ASTIN Bulletin: Journal of the IAA</div>
+                                <div>• European Actuarial Journal</div>
+                                <div>• Risks</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Presentations -->
+                <div>
+                    <h3 class="text-xl font-bold text-brand-900 border-b border-brand-100 pb-3 mb-6"><i class="fa-solid fa-microphone mr-2 text-brand-600"></i>Invited Talks & Conference Presentations</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+                        <!-- Invited Talks -->
+                        <div class="space-y-4">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-2">Selected Invited Seminar Talks</h4>
+                            <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm space-y-3 text-xs text-brand-600">
+                                <div>
+                                    <span class="font-bold text-brand-900">Nov 2024</span> | School of Statistics, East China Normal University, Shanghai, China
+                                </div>
+                                <div>
+                                    <span class="font-bold text-brand-900">Jun 2024</span> | School of Mathematical Sciences, Shenzhen University, Shenzhen, China
+                                </div>
+                                <div>
+                                    <span class="font-bold text-brand-900">Jun 2024</span> | Dept. of Mathematics, Southern University of Science and Technology, China
+                                </div>
+                                <div>
+                                    <span class="font-bold text-brand-900">Nov 2023</span> | School of Mathematics & Stats, Fujian Normal University, China
+                                </div>
+                                <div>
+                                    <span class="font-bold text-brand-900">Jan 2018</span> | Dept. of Risk Management & Insurance, Georgia State University, USA
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Conference Presentations -->
+                        <div class="space-y-4">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-brand-600 mb-2">Selected Academic Presentations</h4>
+                            <div class="bg-white border border-brand-100 p-4 rounded-xl shadow-sm space-y-3 text-xs text-brand-600">
+                                <div>
+                                    <span class="font-bold text-brand-900">Jul 2025</span> | CCIRM 2025, Urumqi, China<br>
+                                    <span class="italic text-brand-600">"Optimal Dividend and Capital Injection Control Under Two-Sided Jump-Diffusion Processes"</span>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-brand-900">Jun 2025</span> | Insurance Data Science Conference 2025, London, UK<br>
+                                    <span class="italic text-brand-600">"LSTM-based Coherent Mortality Forecasting for Developing Regions"</span>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-brand-900">Jul 2023</span> | 26th International Congress on IME, Edinburgh, UK<br>
+                                    <span class="italic text-brand-600">"Optimal singular dividend control with capital injection" (Session Chair)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Honors & Awards -->
+                <div>
+                    <h3 class="text-xl font-bold text-brand-900 border-b border-brand-100 pb-3 mb-6"><i class="fa-solid fa-award mr-2 text-brand-600"></i>Honors & Awards</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                        <div class="bg-white border border-brand-100 p-5 rounded-xl shadow-sm space-y-2">
+                            <span class="text-xs font-bold text-brand-600 block">Jiangsu Province (2020)</span>
+                            <h4 class="font-bold text-brand-900 text-sm">Innovation & Entrepreneurship Doctor-Talent Program</h4>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-5 rounded-xl shadow-sm space-y-2">
+                            <span class="text-xs font-bold text-brand-600 block">Concordia University (2019)</span>
+                            <h4 class="font-bold text-brand-900 text-sm">Postdoctoral Fellow Top-up Award</h4>
+                            <p class="text-xs text-brand-600">Faculty of Arts and Science</p>
+                        </div>
+                        <div class="bg-white border border-brand-100 p-5 rounded-xl shadow-sm space-y-2">
+                            <span class="text-xs font-bold text-brand-600 block">Risks Journal (2018)</span>
+                            <h4 class="font-bold text-brand-900 text-sm">Travel Awards</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Page Footer -->
+    <footer class="bg-white border-t border-brand-100 mt-16 py-8">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-xs text-brand-600 gap-4">
+            <p>© 2026 Dr. Ran Xu. All rights reserved.</p>
+            <p>Last compiled on 2026-06-26</p>
+        </div>
+    </footer>
+
+    <!-- Pure Tab Switching JavaScript Logic -->
+    <script>
+        function switchTab(tabId) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Deactivate all navigation buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(button => {
+                button.classList.remove('bg-brand-800', 'text-white', 'hover:bg-brand-800');
+                button.classList.add('text-brand-600', 'hover:text-brand-900', 'hover:bg-brand-100');
+            });
+
+            // Show target tab content
+            const targetContent = document.getElementById('tab-' + tabId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+
+            // Set active state on button
+            const targetButton = document.getElementById('tab-btn-' + tabId);
+            if (targetButton) {
+                targetButton.classList.remove('text-brand-600', 'hover:text-brand-900', 'hover:bg-brand-100');
+                targetButton.classList.add('bg-brand-800', 'text-white', 'hover:bg-brand-800');
+            }
+
+            // Store active tab inside localStorage for continuity on reload
+            localStorage.setItem('activeTab', tabId);
+        }
+
+        // Initialize default or saved tab on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTab = localStorage.getItem('activeTab') || 'about';
+            switchTab(savedTab);
+        });
+    </script>
 </body>
 </html>
